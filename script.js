@@ -8,8 +8,6 @@ function getUsersChoice(){
   let playersChoice = prompt('What is your choice?', '');
   return playersChoice.charAt(0).toUpperCase() + playersChoice.slice(1).toLowerCase();
   }
-  let playerSelection = getUsersChoice();
-  let computerSelection = getComputersChoice();
   let userScore = 0;
   let computerScore = 0;
 //declare a function that plays one game of rock-paper-scissors
@@ -30,12 +28,15 @@ function playRound(playerSelection, computerSelection){
    }
 }
 
-console.log(playRound(playerSelection, computerSelection));
 // declare a function that plays rock-paper-scissors until one of the players gets 5 wins
 function game(){
   for (let i = 0; i < 5; i++){
-    playerSelection();
-    gameOn(playerSelection, computerSelection);
+    let playerSelection = getUsersChoice();
+    let computerSelection = getComputersChoice();
+    playRound(playerSelection, computerSelection);
+    if (playerSelection == computerSelection){
+      i = --i;
+    }
     if (userScore == 5){
       alert("Congratulations human! You saved us from Evil AI!");
     }
